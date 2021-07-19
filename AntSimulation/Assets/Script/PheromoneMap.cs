@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PheromoneMap : MonoBehaviour
 {
-    public float size = 1;
+    public float cell_size = 1;
 
+    private float pixelsPerUnit = 4f;
     private Vector3 start = new Vector3();
     private Vector3 end = new Vector3();    
+    private Vector2Int size = new Vector2Int();
 
     private SpriteRenderer renderer;
     private Texture2D pheromoneMap;
@@ -17,13 +19,16 @@ public class PheromoneMap : MonoBehaviour
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
-        
-        pheromoneMap = new Texture2D(288, 160);
+
+        size.x = 288;
+        size.y = 160;
+        pheromoneMap = new Texture2D(size.x, size.y);
         pheromoneMap.wrapMode = TextureWrapMode.Repeat;
+        pheromoneMap.filterMode = FilterMode.Point;
         //pheromoneMap.filterMode = FilterMode.Point;
         //pheromoneMap.mipMapBias = 0f;
 
-        colors = new Color[288, 160];
+        colors = new Color[size.x, size.y];
 
         for (int i = 0; i < 288; i++)
         {
@@ -34,7 +39,7 @@ public class PheromoneMap : MonoBehaviour
         }
         
         pheromoneMap.Apply();
-        renderer.sprite = Sprite.Create(pheromoneMap, new Rect(0f, 0f, 288, 160), new Vector2(0f, 0f), 4f);
+        renderer.sprite = Sprite.Create(pheromoneMap, new Rect(0f, 0f, size.x, size.y), new Vector2(0f, 0f), pixelsPerUnit);
     }
     
     // Update is called once per frame
@@ -50,9 +55,12 @@ public class PheromoneMap : MonoBehaviour
         {
             for (int j = 0; j < 160; j++)
             {
-                colors[i, j].b -= Time.deltaTime * 0.02f;
-                colors[i, j].g -= Time.deltaTime * 0.02f;
+                colors[i, j].b -= Time.deltaTime * 0.01f;
+                colors[i, j].g -= Time.deltaTime * 0.01f;
+                colors[i,j].b = (colors[i,j].b < 0f) ? 0f : colors[i, j].b;
+                colors[i, j].g = (colors[i, j].g < 0f) ? 0f : colors[i, j].g;
                 pheromoneMap.SetPixel(i, j, colors[i,j]);
+                
             }
         }
         pheromoneMap.Apply();
@@ -60,20 +68,29 @@ public class PheromoneMap : MonoBehaviour
 
     public void SetGreenByPos(Vector2 pos,float g)
     {
-        colors[(int)(pos.x * 4f), (int)(pos.y * 4f)].g = g;
+        colors[(int)(pos.x * pixelsPerUnit), (int)(pos.y * pixelsPerUnit)].g = g;
     }
     public void SetBlueByPos(Vector2 pos, float b)
     {
-        colors[(int)(pos.x * 4f), (int)(pos.y * 4f)].b = b;
+        colors[(int)(pos.x * pixelsPerUnit), (int)(pos.y * pixelsPerUnit)].b = b;
+    }
+
+    public void AddGreenByPos(Vector2 pos, float g)
+    {
+        colors[(int)(pos.x * pixelsPerUnit), (int)(pos.y * pixelsPerUnit)].g += g;
+    }
+    public void AddBlueByPos(Vector2 pos, float b)
+    {
+        colors[(int)((pos.x * pixelsPerUnit) %size.x), (int)((pos.y * pixelsPerUnit) %size.y)].b += b;
     }
 
     public float GetGreenByPos(Vector2 pos)
     {
-        return colors[(int)(pos.x * 4f), (int)(pos.y * 4f)].g;
+        return colors[(int)(((pos.x + size.x)  * pixelsPerUnit) %size.x), (int)(((pos.y + size.y) * pixelsPerUnit) %size.y)].g;
     }
-    public float GetBlutByPos(Vector2 pos)
+    public float GetBlueByPos(Vector2 pos)
     {
-        return colors[(int)(pos.x * 4f), (int)(pos.y * 4f)].b;
+        return colors[(int)(((pos.x + size.x) * pixelsPerUnit) % size.x), (int)(((pos.y + size.y) * pixelsPerUnit) % size.y)].b;
     }
 
     private void DrawGridLine()
@@ -83,14 +100,14 @@ public class PheromoneMap : MonoBehaviour
             start.x = -1000f;
             end.x = 1000f;
 
-            start.y = i * size;
-            end.y = i * size;
+            start.y = i * cell_size;
+            end.y = i * cell_size;
             Debug.DrawLine(start + transform.position, end + transform.position, Color.black);
 
             start.y = -1000f;
             end.y = 1000f;
-            start.x = i * size;
-            end.x = i * size;
+            start.x = i * cell_size;
+            end.x = i * cell_size;
             Debug.DrawLine(start + transform.position, end + transform.position, Color.black);
         }
     }
