@@ -1,3 +1,1 @@
-# DeepHunter
-- 흔적을 추적해 사냥 전략을 세우는 강화학습 알고리즘
--
+# MLAgents-for-LevelDesign
