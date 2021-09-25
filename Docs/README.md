@@ -10,4 +10,5 @@
 [2021.09.17](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.17.md) |
 [2021.09.19](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.19.md) |
 [2021.09.20](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.20.md) |
+[2021.09.25](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.25.md) 
 # Reference link
