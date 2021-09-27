@@ -7,5 +7,5 @@
 ### *find reference*
 [2021.09.15](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.15.md) |
 [2021.09.19](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.19.md) |
-[2021.09.25](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.25.md) 
-# Reference link
+[2021.09.25](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.25.md) |
+[2021.09.27](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.27.md) 
