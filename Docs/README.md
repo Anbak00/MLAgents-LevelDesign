@@ -9,4 +9,6 @@
 [2021.09.19](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.19.md) |
 [2021.09.25](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.25.md) |
 [2021.09.27](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.09.27.md) |
-[2021.10.02](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.10.02.md) 
+[2021.10.02](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.10.02.md) |
+[2021.10.03](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.10.03.md) |
+[2021.10.04](https://github.com/Anbak00/MLAgents-LevelDesign/blob/main/Docs/Laboratory/2021.10.04.md) 
